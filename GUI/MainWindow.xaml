@@ -1,0 +1,119 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Project #4 Prototype" Height="600" Width="509.566" Padding="20" FontFamily="tahoma" Background="#ccc" Loaded="Window_Loaded">
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////
+    // MainWindow.xaml - GUI for Project3HelpWPF                         //
+    // ver 1.0                                                           //
+    // Jim Fawcett, CSE687 - Object Oriented Design, Spring 2019         //
+    ///////////////////////////////////////////////////////////////////////
+    -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <!-- dirs -->
+            <RowDefinition Height="5"></RowDefinition>
+            <!-- gridsplitter-->
+            <RowDefinition Height="*"></RowDefinition>
+            <!-- files -->
+            <RowDefinition Height="5"></RowDefinition>
+            <!-- gridsplitter-->
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#ccc">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <!-- label -->
+                <RowDefinition Height="30"></RowDefinition>
+                <!-- textblock -->
+                <RowDefinition Height="*"></RowDefinition>
+                <!-- dir list -->
+                <RowDefinition Height="10"></RowDefinition>
+                <!-- buttons -->
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0">
+                <Button Width="40" Height="20" Margin="10 0" DockPanel.Dock="Right">Up</Button>
+                <TextBlock DockPanel.Dock="Left" Margin="10 0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold">Dirs</TextBlock>
+            </DockPanel>
+            <DockPanel Grid.Row="1">
+                <Label Width="40" Height="30" Margin="10 0 5 0" DockPanel.Dock="Right">Path</Label>
+                <TextBlock x:Name="PathTextBlock" DockPanel.Dock="Left" Padding="10 0" Margin="12 0" VerticalAlignment="Center" FontSize="14" FontWeight="Normal" Background="#fff">path</TextBlock>
+            </DockPanel>
+            <Border Grid.Row="2" BorderThickness="10" Background="#000">
+                <ListBox x:Name="DirList" MouseDoubleClick="DirList_MouseDoubleClick"></ListBox>
+            </Border>
+        </Grid>
+        <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Background="#666" Margin="0,46,0,-3" RenderTransformOrigin="0.5,0.5">
+            <GridSplitter.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </GridSplitter.RenderTransform>
+        </GridSplitter>
+        <Grid Grid.Row="2" Background="#ccc">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="106*"/>
+                <ColumnDefinition Width="145*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <!-- label -->
+                <RowDefinition Height="*"/>
+                <!-- file list -->
+                <RowDefinition Height="30"></RowDefinition>
+                <!-- buttons -->
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Padding="10 0" FontWeight="Bold" FontSize="14" Grid.ColumnSpan="2" Margin="0,0,10,6"><Run Text="Files"/><Run Text=" "/><InlineUIContainer>
+                    <TextBox x:Name="FileNamePatten"   Height="21" TextWrapping="Wrap" Text="(F)(.*)" Width="149"/>
+                </InlineUIContainer></TextBlock>
+            <Button Content="Convert Matched Files" Click="ConvertAll_click" Margin="10,-5,148,4" Grid.Column="1" />
+            <Button Content="Scan Matched Files" Name="MatcherButton" Click="PatIt" Margin="147,-5,27,4" Grid.Column="1" />
+
+            <Border  Grid.Row="1" BorderThickness="10" Background="#000" Grid.ColumnSpan="2" Margin="0,33,0,5" Grid.RowSpan="2">
+                <ListBox x:Name="FileList" Margin="0,-41,0,0" MouseDoubleClick="FileList_MouseDoubleClick" ></ListBox>
+            </Border>
+            <TextBlock Grid.Row="2" FontWeight="Light"  FontSize="14" Grid.ColumnSpan="2" Text="Double click the file name above to convert!" FontStyle="Italic" Margin="10,16,-10,-16" />
+        </Grid>
+        <GridSplitter Grid.Row="3" HorizontalAlignment="Stretch" Background="#666" Margin="0,46,0,-1" RenderTransformOrigin="0.5,0.5">
+            <GridSplitter.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </GridSplitter.RenderTransform>
+        </GridSplitter>
+        <Grid Grid.Row="4" Background="#ccc">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="106*"/>
+                <ColumnDefinition Width="145*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85"></RowDefinition>
+                <!-- label -->
+                <RowDefinition/>
+                <!-- file list -->
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Padding="10 10" FontWeight="Bold" FontSize="14" Grid.ColumnSpan="2" Margin="0,0,10,41"><Run Text="Converted Pages:"/>
+            </TextBlock>
+            <TabControl x:Name="Controler"  Grid.Column="1" Margin="69,5,78,58" >
+                <TabItem x:Name="CodeMode" Header=" Code " ></TabItem>
+                <TabItem x:Name="BrowserMode" Header="Browser"></TabItem>
+            </TabControl>
+            <Border BorderThickness="10" Background="#000" Grid.ColumnSpan="2" Margin="0,27,0,0" Grid.RowSpan="2">
+                <ListBox x:Name="PageList" MouseDoubleClick="PageList_MouseDoubleClick"></ListBox>
+            </Border>
+        </Grid>
+
+    </Grid>
+
+</Window>

@@ -1,0 +1,34 @@
+
+<div class="toggleCommentDisplay">/////////////////////////////////////////////////////////////////////////////</div>
+<div class="toggleCommentDisplay">// Filter.h - Filter file names using regex match                          //</div>
+<div class="toggleCommentDisplay">// Author: Xiaohan Wang                                                    //</div>
+<div class="toggleCommentDisplay">/////////////////////////////////////////////////////////////////////////////</div>
+<div class="toggleCommentDisplay">/*</div>
+ <div class="toggleCommentDisplay">* Package Operations:
+ <div class="toggleCommentDisplay">* -------------------
+ <div class="toggleCommentDisplay">* This package contains 2 files --Filter.h and Filter.cpp.
+ <div class="toggleCommentDisplay">* This package is designed to find matched files by their file names given.
+ <div class="toggleCommentDisplay">* To initialize the filter a regex value will be given.
+ <div class="toggleCommentDisplay">* To do the filter, use the function RegIt and provide the vector of the file names.
+ <div class="toggleCommentDisplay">*
+ <div class="toggleCommentDisplay">* Required Files:
+ <div class="toggleCommentDisplay">* ---------------
+ <div class="toggleCommentDisplay">* Filter.h  Filter.cpp
+ <div class="toggleCommentDisplay">*
+ <div class="toggleCommentDisplay">*
+ <div class="toggleCommentDisplay">* Maintenance History:
+ <div class="toggleCommentDisplay">* --------------------
+ <div class="toggleCommentDisplay">* ver 1.0 : 4 Feb 2019
+ <div class="toggleCommentDisplay">*
+ *<div class="toggleCommentDisplay">/</div>
+#include<string>
+#include<vector>
+class Filter {
+<div class="toggleClassDisplay">
+public:
+	Filter(std::string reger);
+	std::vector<std::string> RegIt(std::vector<std::string> &target);
+private:
+	std::string reg_;
+};
+</div>
